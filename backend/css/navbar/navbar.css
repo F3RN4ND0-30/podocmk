@@ -1,0 +1,91 @@
+.navbar-admin {
+  background-color: #1a202c;
+  padding: 15px 0;
+  color: white;
+}
+
+.nav-admin-contenedor {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-admin {
+  font-weight: bold;
+  font-size: 18px;
+  color: #2c7a7b;
+}
+
+.nav-admin-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.nav-admin-links a,
+.nav-admin-links span {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Dropdown */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 25px;
+  background: white;
+  min-width: 180px;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 10px;
+  color: #333;
+  text-decoration: none;
+  font-weight: normal;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+/* Mostrar dropdown al hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Desactivado */
+.disabled {
+  color: gray !important;
+  pointer-events: none;
+  background-color: #eee;
+}
+
+/* Botón logout */
+.btn-logout {
+  background-color: #e53e3e;
+  padding: 8px 12px;
+  border-radius: 6px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.btn-logout:hover {
+  background-color: #c53030;
+}
