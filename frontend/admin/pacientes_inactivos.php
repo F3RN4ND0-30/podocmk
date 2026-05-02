@@ -43,7 +43,7 @@ $pacientes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                 <div class="card-paciente">
 
-                    <img src="../img/paciente-default.jpg" alt="Paciente">
+                    <img src="../../backend/img/paciente_default.png" alt="Paciente">
 
                     <h3>
                         <?php echo $p['Nombres'] . " " . $p['Apellido_Pat']; ?>

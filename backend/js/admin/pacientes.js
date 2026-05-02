@@ -80,16 +80,21 @@ function abrirHistorial(id) {
 
       let html = "";
 
-      if (data.historial.length === 0) {
+      // validar si hay datos
+      if (!data.historial || Object.keys(data.historial).length === 0) {
         html = "<p>No hay sesiones registradas</p>";
       } else {
-        data.historial.forEach((item, index) => {
-          html += `
-            <div class="sesion">
-              <p>Sesión ${index + 1}</p>
-              <img src="../../backend/uploads/${item.Foto}" />
-            </div>
-          `;
+        Object.keys(data.historial).forEach((fecha) => {
+          html += `<h4>📅 ${fecha}</h4>`;
+
+          data.historial[fecha].forEach((item, index) => {
+            html += `
+              <div class="sesion">
+                <p>Foto ${index + 1}</p>
+                <img src="../../backend/uploads/${item.Foto}" />
+              </div>
+            `;
+          });
         });
       }
 
