@@ -26,14 +26,14 @@ $nombre = $_SESSION['nombre'];
 
     <div class="dashboard-container">
 
-        <h1>Bienvenido, <?php echo $nombre; ?> 👋</h1>
+        <h1>Bienvenida, <?php echo $nombre; ?> 👋</h1>
 
         <p class="subtitulo">
             ¿Qué haremos el día de hoy?
         </p>
 
         <div class="gif-container">
-            <img src="../img/pie.gif" alt="Pie animado">
+            <img src="../../backend/img/chicharrita.png" alt="Pie animado">
         </div>
 
     </div>
