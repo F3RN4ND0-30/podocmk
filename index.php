@@ -64,7 +64,7 @@
             <h2>Contáctanos</h2>
             <p><strong>Teléfono:</strong> 972 391 916</p>
             <p><strong>Dirección:</strong> Urb. alborada Mz.E lot.30 (Pisco, Ica) </p>
-            <p><strong>Horario:</strong> Lunes a Sábado - 9:00 am a 6:00 pm</p>
+            <p><strong>Horario:</strong> Lunes a Sábado - 9:00 am a 6:00 pm (previa cita)</p>
         </div>
     </section>
 

@@ -51,12 +51,27 @@ $pacientes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                     <p><?php echo $p['Telefono']; ?></p>
 
-                    <select>
-                        <option>Acciones</option>
-                        <option onclick="abrirEditar(<?php echo $p['IdPaciente']; ?>)">Editar</option>
-                        <option onclick="abrirHistorial(<?php echo $p['IdPaciente']; ?>)">Historial</option>
-                        <option onclick="desactivarPaciente(<?php echo $p['IdPaciente']; ?>)">Desactivar</option>
-                    </select>
+                    <div class="acciones">
+
+                        <button onclick="abrirEditar(
+                            <?php echo $p['IdPaciente']; ?>,
+                            '<?php echo $p['Nombres']; ?>',
+                            '<?php echo $p['Apellido_Pat']; ?>',
+                            '<?php echo $p['Apellido_Mat']; ?>',
+                            '<?php echo $p['Telefono']; ?>'
+                        )">
+                            ✏️ Editar
+                        </button>
+
+                        <button onclick="abrirHistorial(<?php echo $p['IdPaciente']; ?>)">
+                            📄 Historial
+                        </button>
+
+                        <button onclick="desactivarPaciente(<?php echo $p['IdPaciente']; ?>)">
+                            ❌ Desactivar
+                        </button>
+
+                    </div>
 
                 </div>
 
@@ -82,6 +97,54 @@ $pacientes = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <button type="submit">Guardar</button>
                 <button type="button" onclick="cerrarModalPaciente()">Cancelar</button>
             </form>
+        </div>
+    </div>
+
+    <div id="modalEditarPaciente" class="modal">
+
+        <div class="modal-contenido">
+
+            <h3>Editar Paciente</h3>
+
+            <form action="../../backend/php/admin/pacientes/editar_paciente.php" method="POST">
+
+                <input type="hidden" name="id_paciente" id="edit_id">
+
+                <input type="text" name="nombre" id="edit_nombre" required>
+                <input type="text" name="apellido_pat" id="edit_apellido_pat" required>
+                <input type="text" name="apellido_mat" id="edit_apellido_mat" required>
+                <input type="text" name="telefono" id="edit_telefono" required>
+
+                <button type="submit">Actualizar</button>
+                <button type="button" onclick="cerrarModalEditar()">Cancelar</button>
+
+            </form>
+        </div>
+    </div>
+
+    <div id="modalHistorial" class="modal">
+
+        <div class="modal-contenido modal-historial">
+
+            <h3 id="tituloPaciente">Historial</h3>
+
+            <button onclick="document.getElementById('inputFoto').click()">
+                + Subir foto / Tomar foto
+            </button>
+
+            <input
+                type="file"
+                id="inputFoto"
+                accept="image/*"
+                capture="environment"
+                style="display:none">
+
+            <div id="contenidoHistorial">
+                <!-- Aquí se cargan las sesiones -->
+            </div>
+
+            <button onclick="cerrarHistorial()">Cerrar</button>
+
         </div>
     </div>
 

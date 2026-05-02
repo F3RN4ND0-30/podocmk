@@ -1,3 +1,9 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
+
 <nav class="navbar-admin">
     <div class="nav-admin-contenedor">
 
@@ -11,14 +17,11 @@
 
             <li><a href="pacientes.php">Pacientes</a></li>
 
-            <li class="dropdown">
-                <span>Productos ▾</span>
-                <div class="dropdown-content">
-                    <a href="productos_registro.php">Registro</a>
-                    <a href="productos_edicion.php">Edición</a>
-                    <a class="disabled">Desactivado</a>
-                </div>
-            </li>
+            <?php if ($_SESSION['id'] == '1'): ?>
+                <li><a href="pacientes_inactivos.php">Activación</a></li>
+            <?php endif; ?>
+
+            <li><a href="productos.php">Productos</a></li>
 
             <li>
                 <a href="citas.php">Citas</a>
