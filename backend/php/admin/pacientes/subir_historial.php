@@ -8,7 +8,7 @@ $tmp = $_FILES['foto']['tmp_name'];
 
 $fechaSesion = date("Y-m-d");
 
-$carpeta = "../../../uploads/";
+$carpeta = "../../../uploads/pacientes/";
 
 $nombreFinal = time() . "_" . $img;
 

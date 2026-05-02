@@ -1,0 +1,399 @@
+/* =========================
+   BASE
+========================= */
+body {
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  margin: 0;
+  background: linear-gradient(135deg, #eef2f7, #e6ecf3);
+}
+
+/* =========================
+   CONTENEDOR
+========================= */
+.productos-container {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.productos-container h2 {
+  font-size: 26px;
+  margin-bottom: 15px;
+  color: #2d3748;
+}
+
+/* =========================
+   GRID
+========================= */
+.grid-productos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* =========================
+   CARD PRODUCTO
+========================= */
+.card-producto {
+  background: white;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  transition: 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-producto:hover {
+  transform: translateY(-6px);
+}
+
+/* Imagen */
+.card-producto img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+/* Contenido */
+.card-producto h3 {
+  font-size: 18px;
+  margin: 12px 15px 5px;
+  color: #1a202c;
+}
+
+.card-producto p {
+  font-size: 13px;
+  color: #4a5568;
+  margin: 5px 15px;
+}
+
+/* Stock destacado */
+.card-producto .stock {
+  margin: 10px 15px;
+  font-weight: bold;
+  color: #2c7a7b;
+}
+
+/* =========================
+   ACCIONES
+========================= */
+.acciones {
+  display: flex;
+  gap: 8px;
+  padding: 15px;
+  margin-top: auto;
+}
+
+.acciones button {
+  flex: 1;
+  border: none;
+  padding: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: 0.2s;
+}
+
+/* editar */
+.acciones button:first-child {
+  background: #3182ce;
+  color: white;
+}
+
+/* eliminar */
+.acciones button:last-child {
+  background: #e53e3e;
+  color: white;
+}
+
+.acciones button:hover {
+  opacity: 0.85;
+  transform: scale(1.05);
+}
+
+/* =========================
+   CARD AGREGAR
+========================= */
+.card-agregar {
+  background: #f8fafc;
+  border: 2px dashed #2c7a7b;
+  border-radius: 14px;
+  cursor: pointer;
+  height: 100%;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s;
+}
+
+.card-agregar span {
+  font-size: 40px;
+  color: #2c7a7b;
+}
+
+.card-agregar p {
+  margin-top: 10px;
+  color: #2c7a7b;
+  font-weight: bold;
+}
+
+.card-agregar:hover {
+  background: #e6fffa;
+  transform: translateY(-5px);
+}
+
+/* =========================
+   MODAL FONDO
+========================= */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.55);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.2s ease;
+}
+
+/* =========================
+   CONTENIDO MODAL
+========================= */
+.modal-contenido {
+  background: #ffffff;
+  width: 400px;
+  max-width: 90%;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+  animation: slideUp 0.25s ease;
+}
+
+/* =========================
+   TITULO
+========================= */
+.modal-contenido h3 {
+  margin: 0 0 15px 0;
+  font-size: 20px;
+  color: #2d3748;
+  text-align: center;
+}
+
+/* =========================
+   INPUTS
+========================= */
+.modal-contenido input,
+.modal-contenido textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 8px;
+  border: 1px solid #cbd5e0;
+  outline: none;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.modal-contenido input:focus,
+.modal-contenido textarea:focus {
+  border-color: #2c7a7b;
+  box-shadow: 0 0 0 2px rgba(44, 122, 123, 0.2);
+}
+
+/* =========================
+   BOTONES
+========================= */
+.modal-contenido button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+/* guardar */
+.modal-contenido button[type="submit"] {
+  background: #2c7a7b;
+  color: white;
+}
+
+.modal-contenido button[type="submit"]:hover {
+  background: #225f60;
+}
+
+/* cancelar */
+.modal-contenido button[type="button"] {
+  background: #e2e8f0;
+  color: #2d3748;
+}
+
+.modal-contenido button[type="button"]:hover {
+  background: #cbd5e0;
+}
+
+/* =========================
+   ANIMACIONES
+========================= */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* =========================
+   MODAL EDITAR PRODUCTO
+========================= */
+#modalEditarProducto.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(6px);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+/* CONTENIDO */
+
+/* CONTENIDO DEL MODAL CON LIMITE DE ALTURA */
+#modalEditarProducto .modal-contenido {
+  background: #ffffff;
+  width: 450px;
+  max-width: 100%;
+  border-radius: 16px;
+  padding: 22px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+  animation: modalIn 0.25s ease;
+
+  /* 🔥 CLAVE */
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* TITULO */
+#modalEditarProducto .modal-contenido h3 {
+  margin: 0 0 15px 0;
+  font-size: 20px;
+  color: #1f2937;
+  text-align: center;
+}
+
+/* INPUTS */
+#modalEditarProducto .modal-contenido input,
+#modalEditarProducto .modal-contenido textarea {
+  width: 100%;
+  padding: 10px 12px;
+  margin: 8px 0;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+  outline: none;
+  background: #f9fafb;
+  transition: 0.2s;
+}
+
+#modalEditarProducto .modal-contenido textarea {
+  height: 80px;
+  resize: none;
+}
+
+/* FOCUS */
+#modalEditarProducto .modal-contenido input:focus,
+#modalEditarProducto .modal-contenido textarea:focus {
+  border-color: #2c7a7b;
+  box-shadow: 0 0 0 3px rgba(44, 122, 123, 0.15);
+  background: #fff;
+}
+
+/* IMAGEN PREVIEW */
+#modalEditarProducto .modal-contenido img {
+  width: 100%;
+  border-radius: 10px;
+  margin: 10px 0;
+  object-fit: cover;
+}
+
+/* BOTONES */
+#modalEditarProducto .modal-contenido button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+/* actualizar */
+#modalEditarProducto .modal-contenido button[type="submit"] {
+  background: linear-gradient(135deg, #2c7a7b, #38b2ac);
+  color: white;
+}
+
+#modalEditarProducto .modal-contenido button[type="submit"]:hover {
+  transform: translateY(-2px);
+}
+
+/* cancelar */
+#modalEditarProducto .modal-contenido button[type="button"] {
+  background: #e5e7eb;
+  color: #111827;
+}
+
+#modalEditarProducto .modal-contenido button[type="button"]:hover {
+  background: #d1d5db;
+}
+
+/* ANIMACION */
+@keyframes modalIn {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 900px) {
+  .grid-productos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .grid-productos {
+    grid-template-columns: 1fr;
+  }
+}

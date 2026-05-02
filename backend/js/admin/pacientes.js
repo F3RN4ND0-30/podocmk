@@ -91,7 +91,7 @@ function abrirHistorial(id) {
             html += `
               <div class="sesion">
                 <p>Foto ${index + 1}</p>
-                <img src="../../backend/uploads/${item.Foto}" />
+                <img src="../../backend/uploads/pacientes/${item.Foto}" />
               </div>
             `;
           });

@@ -18,10 +18,14 @@ if (session_status() === PHP_SESSION_NONE) {
             <li><a href="pacientes.php">Pacientes</a></li>
 
             <?php if ($_SESSION['id'] == '1'): ?>
-                <li><a href="pacientes_inactivos.php">Activación</a></li>
+                <li><a href="pacientes_inactivos.php">Acti-Pacientes</a></li>
             <?php endif; ?>
 
             <li><a href="productos.php">Productos</a></li>
+
+            <?php if ($_SESSION['id'] == '1'): ?>
+                <li><a href="productos_inactivos.php">Acti-Productos</a></li>
+            <?php endif; ?>
 
             <li>
                 <a href="citas.php">Citas</a>
