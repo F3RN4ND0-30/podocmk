@@ -23,6 +23,8 @@ $pacientes = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <title>Pacientes - CMK</title>
     <link rel="stylesheet" href="../../backend/css/admin/pacientes.css">
     <link rel="stylesheet" href="../../backend/css/navbar/navbar.css">
+
+    <link rel="icon" href="../../backend/img/icono.png" type="image/png">
 </head>
 
 <body>

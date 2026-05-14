@@ -146,39 +146,42 @@ body {
 }
 
 /* =========================
-   MODAL FONDO
+   MODAL FONDO (BASE PARA TODOS)
 ========================= */
 .modal {
   display: none;
   position: fixed;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.55);
   justify-content: center;
   align-items: center;
+  padding: 20px;
   z-index: 1000;
   backdrop-filter: blur(4px);
   animation: fadeIn 0.2s ease;
 }
 
+/* Mostrar modal */
+.modal.active {
+  display: flex;
+}
+
 /* =========================
-   CONTENIDO MODAL
+   CONTENIDO BASE MODAL
 ========================= */
 .modal-contenido {
   background: #ffffff;
-  width: 400px;
-  max-width: 90%;
+  width: 100%;
+  max-width: 420px;
   border-radius: 14px;
   padding: 20px;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
   animation: slideUp 0.25s ease;
 }
 
-/* =========================
-   TITULO
-========================= */
+/* TITULO */
 .modal-contenido h3 {
   margin: 0 0 15px 0;
   font-size: 20px;
@@ -199,6 +202,7 @@ body {
   outline: none;
   font-size: 14px;
   transition: 0.2s;
+  box-sizing: border-box;
 }
 
 .modal-contenido input:focus,
@@ -242,6 +246,91 @@ body {
 }
 
 /* =========================
+   MODAL EDITAR PRODUCTO
+========================= */
+#modalEditarProducto.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(6px);
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  z-index: 1000;
+}
+
+/* contenido específico */
+#modalEditarProducto .modal-contenido {
+  background: #fff;
+  width: 100%;
+  max-width: 450px;
+  border-radius: 16px;
+  padding: 22px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* inputs */
+#modalEditarProducto .modal-contenido input,
+#modalEditarProducto .modal-contenido textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+  outline: none;
+  background: #f9fafb;
+  box-sizing: border-box;
+}
+
+#modalEditarProducto .modal-contenido textarea {
+  height: 80px;
+  resize: none;
+}
+
+#modalEditarProducto .modal-contenido input:focus,
+#modalEditarProducto .modal-contenido textarea:focus {
+  border-color: #2c7a7b;
+  box-shadow: 0 0 0 3px rgba(44, 122, 123, 0.15);
+  background: #fff;
+}
+
+/* imagen preview */
+#modalEditarProducto .modal-contenido img {
+  width: 100%;
+  border-radius: 10px;
+  margin: 10px 0;
+  object-fit: cover;
+}
+
+/* botones */
+#modalEditarProducto .modal-contenido button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+/* actualizar */
+#modalEditarProducto .modal-contenido button[type="submit"] {
+  background: linear-gradient(135deg, #2c7a7b, #38b2ac);
+  color: white;
+}
+
+/* cancelar */
+#modalEditarProducto .modal-contenido button[type="button"] {
+  background: #e5e7eb;
+  color: #111827;
+}
+
+/* =========================
    ANIMACIONES
 ========================= */
 @keyframes fadeIn {
@@ -265,135 +354,111 @@ body {
 }
 
 /* =========================
-   MODAL EDITAR PRODUCTO
+   RESPONSIVE
 ========================= */
-#modalEditarProducto.modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(15, 23, 42, 0.6);
-  backdrop-filter: blur(6px);
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  padding: 20px;
-}
-
-/* CONTENIDO */
-
-/* CONTENIDO DEL MODAL CON LIMITE DE ALTURA */
-#modalEditarProducto .modal-contenido {
-  background: #ffffff;
-  width: 450px;
-  max-width: 100%;
-  border-radius: 16px;
-  padding: 22px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
-  animation: modalIn 0.25s ease;
-
-  /* 🔥 CLAVE */
-  max-height: 90vh;
-  overflow-y: auto;
-}
-
-/* TITULO */
-#modalEditarProducto .modal-contenido h3 {
-  margin: 0 0 15px 0;
-  font-size: 20px;
-  color: #1f2937;
-  text-align: center;
-}
-
-/* INPUTS */
-#modalEditarProducto .modal-contenido input,
-#modalEditarProducto .modal-contenido textarea {
-  width: 100%;
-  padding: 10px 12px;
-  margin: 8px 0;
-  border-radius: 10px;
-  border: 1px solid #d1d5db;
-  font-size: 14px;
-  outline: none;
-  background: #f9fafb;
-  transition: 0.2s;
-}
-
-#modalEditarProducto .modal-contenido textarea {
-  height: 80px;
-  resize: none;
-}
-
-/* FOCUS */
-#modalEditarProducto .modal-contenido input:focus,
-#modalEditarProducto .modal-contenido textarea:focus {
-  border-color: #2c7a7b;
-  box-shadow: 0 0 0 3px rgba(44, 122, 123, 0.15);
-  background: #fff;
-}
-
-/* IMAGEN PREVIEW */
-#modalEditarProducto .modal-contenido img {
-  width: 100%;
-  border-radius: 10px;
-  margin: 10px 0;
-  object-fit: cover;
-}
-
-/* BOTONES */
-#modalEditarProducto .modal-contenido button {
-  width: 100%;
-  padding: 10px;
-  margin-top: 8px;
-  border: none;
-  border-radius: 10px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-/* actualizar */
-#modalEditarProducto .modal-contenido button[type="submit"] {
-  background: linear-gradient(135deg, #2c7a7b, #38b2ac);
-  color: white;
-}
-
-#modalEditarProducto .modal-contenido button[type="submit"]:hover {
-  transform: translateY(-2px);
-}
-
-/* cancelar */
-#modalEditarProducto .modal-contenido button[type="button"] {
-  background: #e5e7eb;
-  color: #111827;
-}
-
-#modalEditarProducto .modal-contenido button[type="button"]:hover {
-  background: #d1d5db;
-}
-
-/* ANIMACION */
-@keyframes modalIn {
-  from {
-    transform: translateY(20px);
-    opacity: 0;
+@media (max-width: 600px) {
+  .modal {
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    width: 375px;
   }
-  to {
-    transform: translateY(0);
-    opacity: 1;
+
+  .modal-contenido,
+  #modalEditarProducto .modal-contenido {
+    width: 95%;
+    max-width: 270px;
+    border-radius: 16px;
+    padding: 9px;
   }
 }
 
 /* =========================
-   RESPONSIVE
+   RESPONSIVE TABLET
 ========================= */
-@media (max-width: 900px) {
+@media (max-width: 992px) {
+  .productos-container {
+    margin: 25px auto;
+    padding: 0 15px;
+  }
+
   .grid-productos {
     grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+
+  .card-producto img {
+    height: 160px;
+  }
+
+  .card-producto h3 {
+    font-size: 17px;
+  }
+
+  .card-producto p {
+    font-size: 13px;
+  }
+
+  .acciones button {
+    font-size: 12px;
+  }
+
+  .modal-contenido {
+    width: 90%;
+    max-width: 500px;
   }
 }
 
+/* =========================
+   RESPONSIVE CELULAR
+========================= */
 @media (max-width: 600px) {
+  .productos-container {
+    margin: 20px auto;
+    padding: 0 12px;
+  }
+
+  .productos-container h2 {
+    font-size: 22px;
+    text-align: center;
+  }
+
   .grid-productos {
     grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .card-producto img {
+    height: 170px;
+  }
+
+  .acciones {
+    flex-direction: column;
+  }
+
+  .acciones button {
+    width: 100%;
+    font-size: 13px;
+    padding: 10px;
+  }
+
+  .card-agregar {
+    min-height: 260px;
+  }
+
+  /* 🔥 MODAL FIX IMPORTANTE */
+  .modal {
+    padding: 10px;
+    align-items: center; /* 🔥 clave para centrar */
+    justify-content: center;
+  }
+
+  .modal-contenido {
+    width: 95%;
+    max-width: 420px;
+    border-radius: 16px;
+    padding: 18px;
+    max-height: 90vh;
+    overflow-y: auto;
   }
 }

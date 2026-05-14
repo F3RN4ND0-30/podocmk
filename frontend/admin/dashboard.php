@@ -19,6 +19,8 @@ $nombre = $_SESSION['nombre'];
     <title>Inicio - CMK</title>
     <link rel="stylesheet" href="../../backend/css/admin/dashboard.css">
     <link rel="stylesheet" href="../../backend/css/navbar/navbar.css">
+
+    <link rel="icon" href="../../backend/img/icono.png" type="image/png">
 </head>
 
 <body>

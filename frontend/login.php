@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - CMK</title>
     <link rel="stylesheet" href="../backend/css/login/login.css">
+    <link rel="icon" href="../backend/img/icono.png" type="image/png">
 </head>
 
 <body>

@@ -115,21 +115,33 @@ body {
   transform: scale(1.05);
 }
 
-/* Modal fondo */
+/* =========================
+   MODAL FONDO
+========================= */
 .modal {
   display: none;
   position: fixed;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(4px);
   justify-content: center;
   align-items: center;
+  padding: 20px;
+  z-index: 999;
+  overflow-y: auto;
   animation: fadeIn 0.3s ease;
 }
 
-/* Animación */
+/* Mostrar modal */
+.modal.active {
+  display: flex;
+}
+
+/* =========================
+   ANIMACIONES
+========================= */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -139,87 +151,341 @@ body {
   }
 }
 
-/* Modal contenido */
-.modal-contenido {
-  background: white;
-  padding: 25px;
-  border-radius: 12px;
-  width: 350px;
-  text-align: center;
-  animation: slideUp 0.3s ease;
-}
-
 @keyframes slideUp {
   from {
-    transform: translateY(40px);
+    transform: translateY(40px) scale(0.95);
     opacity: 0;
   }
   to {
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
     opacity: 1;
   }
 }
 
-.modal-contenido h3 {
-  margin-bottom: 15px;
-}
-
-/* Inputs */
-.modal-contenido input {
+/* =========================
+   CONTENIDO MODAL
+========================= */
+.modal-contenido {
+  background: #fff;
   width: 100%;
-  padding: 10px;
+  max-width: 420px;
+  padding: 25px;
+  border-radius: 16px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18);
+  animation: slideUp 0.3s ease;
+}
+
+/* Historial */
+.modal-historial {
+  max-width: 650px;
+  max-height: 85vh;
+  overflow-y: auto;
+}
+
+/* Scroll bonito */
+.modal-historial::-webkit-scrollbar {
+  width: 6px;
+}
+
+.modal-historial::-webkit-scrollbar-thumb {
+  background: #2c7a7b;
+  border-radius: 10px;
+}
+
+/* =========================
+   TITULO
+========================= */
+.modal-contenido h3 {
+  margin-bottom: 18px;
+  font-size: 22px;
+  color: #222;
+}
+
+/* =========================
+   INPUTS
+========================= */
+.modal-contenido input,
+.modal-contenido textarea,
+.modal-contenido select {
+  width: 100%;
+  padding: 12px;
   margin: 8px 0;
-  border-radius: 6px;
-  border: 1px solid #ccc;
+  border-radius: 10px;
+  border: 1px solid #dcdcdc;
   outline: none;
+  font-size: 14px;
+  transition: 0.25s;
+  box-sizing: border-box;
 }
 
-.modal-contenido input:focus {
+.modal-contenido input:focus,
+.modal-contenido textarea:focus,
+.modal-contenido select:focus {
   border-color: #2c7a7b;
+  box-shadow: 0 0 0 3px rgba(44, 122, 123, 0.15);
 }
 
-/* Botones modal */
+/* =========================
+   BOTONES
+========================= */
 .modal-contenido button {
   width: 100%;
-  padding: 10px;
-  margin-top: 6px;
+  padding: 12px;
+  margin-top: 10px;
   border: none;
-  border-radius: 6px;
+  border-radius: 10px;
   cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: 0.25s;
+}
+
+/* Hover */
+.modal-contenido button:hover {
+  transform: translateY(-2px);
+  opacity: 0.92;
 }
 
 /* Guardar */
 .modal-contenido button[type="submit"] {
-  background: #2c7a7b;
+  background: linear-gradient(135deg, #2c7a7b, #38b2ac);
   color: white;
 }
 
 /* Cancelar */
 .modal-contenido button[type="button"] {
-  background: #ccc;
+  background: #e5e7eb;
+  color: #333;
 }
 
-.modal-historial {
-  width: 500px;
-  max-height: 80vh;
-  overflow-y: auto;
-}
-
+/* =========================
+   SESIONES
+========================= */
 .sesion {
-  margin-bottom: 15px;
+  margin-bottom: 18px;
+  padding: 12px;
+  border-radius: 10px;
+  background: #f8fafc;
+  text-align: left;
 }
 
 .sesion img {
   width: 100%;
-  border-radius: 8px;
-  margin-top: 5px;
+  border-radius: 10px;
+  margin-top: 8px;
+  object-fit: cover;
 }
 
-button {
-  background: #2c7a7b;
-  color: white;
-  padding: 10px;
+/* =========================
+   BOTON CERRAR
+========================= */
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  background: transparent;
   border: none;
-  border-radius: 8px;
-  margin-top: 10px;
+  font-size: 22px;
+  cursor: pointer;
+  color: #666;
+  width: auto;
+  padding: 0;
+  margin: 0;
+}
+
+.modal-close:hover {
+  color: #e74c3c;
+  transform: scale(1.1);
+}
+
+/* =========================
+   RESPONSIVE TABLET
+========================= */
+@media (max-width: 768px) {
+  .modal-contenido {
+    max-width: 95%;
+    padding: 22px;
+  }
+
+  .modal-historial {
+    max-width: 95%;
+  }
+}
+
+/* =========================
+   RESPONSIVE CELULAR
+========================= */
+@media (max-width: 480px) {
+  .modal {
+    padding: 10px;
+    align-items: center;
+  }
+
+  .modal-contenido {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 18px 18px 0 0;
+    padding: 20px;
+    animation: slideUp 0.25s ease;
+  }
+
+  .modal-contenido h3 {
+    font-size: 18px;
+  }
+
+  .modal-contenido input,
+  .modal-contenido textarea,
+  .modal-contenido select {
+    font-size: 13px;
+    padding: 11px;
+  }
+
+  .modal-contenido button {
+    padding: 12px;
+    font-size: 13px;
+  }
+
+  .modal-historial {
+    max-height: 90vh;
+  }
+}
+
+/* =========================
+   RESPONSIVE TABLET
+========================= */
+@media (max-width: 992px) {
+  .pacientes-container {
+    margin: 25px auto;
+    padding: 0 15px;
+  }
+
+  /* Grid de 2 columnas */
+  .grid-pacientes {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+
+  .card-paciente {
+    padding: 18px;
+  }
+
+  .card-paciente img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .card-paciente h3 {
+    font-size: 17px;
+  }
+
+  .card-paciente p {
+    font-size: 13px;
+  }
+
+  .acciones button {
+    font-size: 11px;
+    padding: 6px;
+  }
+
+  /* Modal adaptable */
+  .modal-contenido {
+    width: 100%;
+    max-width: 600px;
+  }
+
+  .modal-historial {
+    width: 100%;
+  }
+}
+
+/* =========================
+   RESPONSIVE CELULAR
+========================= */
+@media (max-width: 600px) {
+  body {
+    background: #eef2f7;
+  }
+
+  .pacientes-container {
+    margin: 20px auto;
+    padding: 0 12px;
+  }
+
+  .pacientes-container h2 {
+    font-size: 22px;
+    text-align: center;
+  }
+
+  /* Botón agregar full */
+  .btn-agregar {
+    width: 100%;
+    padding: 12px;
+    font-size: 15px;
+  }
+
+  /* Grid 1 columna */
+  .grid-pacientes {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .card-paciente {
+    padding: 16px;
+    border-radius: 12px;
+  }
+
+  .card-paciente img {
+    width: 75px;
+    height: 75px;
+  }
+
+  .card-paciente h3 {
+    font-size: 16px;
+  }
+
+  .card-paciente p {
+    font-size: 13px;
+  }
+
+  /* Botones uno debajo del otro */
+  .acciones {
+    flex-direction: column;
+  }
+
+  .acciones button {
+    width: 100%;
+    font-size: 13px;
+    padding: 10px;
+  }
+
+  /* Modal responsive */
+  .modal-contenido {
+    width: 70%;
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  .modal-contenido h3 {
+    font-size: 18px;
+  }
+
+  .modal-contenido input {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .modal-contenido button {
+    font-size: 14px;
+  }
+
+  .modal-historial {
+    width: 70%;
+    max-height: 85vh;
+  }
+
+  .sesion img {
+    border-radius: 6px;
+  }
 }

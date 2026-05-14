@@ -7,6 +7,8 @@
     <title>CMK Podología</title>
     <link rel="stylesheet" href="backend/css/index.css">
     <link rel="stylesheet" href="backend/css/navbar/navbar.css">
+
+    <link rel="icon" href="backend/img/icono.png" type="image/png">
 </head>
 
 <body>
@@ -50,11 +52,11 @@
             <div class="imagenes">
                 <div>
                     <p>Antes</p>
-                    <img src="img/antes1.jpg" alt="Antes tratamiento">
+                    <img src="backend/img/antes.jpeg" alt="Antes tratamiento">
                 </div>
                 <div>
                     <p>Después</p>
-                    <img src="img/despues1.jpg" alt="Después tratamiento">
+                    <img src="backend/img/despues.jpeg" alt="Después tratamiento">
                 </div>
             </div>
         </div>

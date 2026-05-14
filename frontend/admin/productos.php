@@ -24,6 +24,8 @@ $productos = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <title>Productos - CMK</title>
     <link rel="stylesheet" href="../../backend/css/admin/productos.css">
     <link rel="stylesheet" href="../../backend/css/navbar/navbar.css">
+
+    <link rel="icon" href="../../backend/img/icono.png" type="image/png">
 </head>
 
 <body>

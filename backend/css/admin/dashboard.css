@@ -55,8 +55,8 @@ body {
 ========================= */
 @media (max-width: 900px) {
   .dashboard-container {
-    width: 90%;
-    padding: 35px;
+    margin: 25px auto;
+    padding: 0 15px;
   }
 
   .gif-container img {
@@ -69,14 +69,9 @@ body {
    CELULAR
 ========================= */
 @media (max-width: 600px) {
-  body {
-    padding: 15px;
-  }
-
   .dashboard-container {
-    width: 100%;
-    margin: 20px auto;
-    padding: 25px 20px;
+    margin: 25px auto;
+    padding: 0 15px;
   }
 
   .dashboard-container h1 {

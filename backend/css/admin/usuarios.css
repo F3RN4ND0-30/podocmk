@@ -1,0 +1,329 @@
+/* =========================
+   BASE
+========================= */
+body {
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  margin: 0;
+  background: linear-gradient(135deg, #eef2f7, #e6ecf3);
+}
+
+/* =========================
+   CONTENEDOR
+========================= */
+.usuarios-container {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.usuarios-container h2 {
+  font-size: 26px;
+  margin-bottom: 15px;
+  color: #2d3748;
+}
+
+/* =========================
+   TABLA
+========================= */
+.tabla-usuarios {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background: #ffffff;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* HEADER */
+.tabla-usuarios thead {
+  background: linear-gradient(135deg, #2c7a7b, #38b2ac);
+  color: white;
+}
+
+.tabla-usuarios th {
+  padding: 14px;
+  text-align: left;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+
+/* ROWS */
+.tabla-usuarios td {
+  padding: 14px;
+  border-bottom: 1px solid #f1f5f9;
+  font-size: 14px;
+  color: #2d3748;
+}
+
+.tabla-usuarios tbody tr {
+  transition: 0.2s;
+}
+
+.tabla-usuarios tbody tr:hover {
+  background: #f8fafc;
+  transform: scale(1.01);
+}
+
+/* =========================
+   ESTADOS
+========================= */
+.estado-activo,
+.estado-inactivo {
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.estado-activo {
+  background: rgba(46, 204, 113, 0.15);
+  color: #2ecc71;
+}
+
+.estado-inactivo {
+  background: rgba(231, 76, 60, 0.15);
+  color: #e74c3c;
+}
+
+/* =========================
+   BOTONES
+========================= */
+.btn-accion {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  transition: 0.2s;
+  margin-right: 5px;
+}
+
+/* editar */
+.btn-editar {
+  background: #3498db;
+  color: white;
+}
+
+.btn-editar:hover {
+  background: #2b6cb0;
+  transform: translateY(-2px);
+}
+
+/* toggle */
+.btn-toggle {
+  background: #f39c12;
+  color: white;
+}
+
+.btn-toggle:hover {
+  background: #d97706;
+  transform: translateY(-2px);
+}
+
+/* click */
+.btn-accion:active {
+  transform: scale(0.95);
+}
+
+.btn-nuevo-usuario {
+  background: linear-gradient(135deg, #2c7a7b, #38b2ac);
+  color: white;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 14px;
+  box-shadow: 0 8px 20px rgba(44, 122, 123, 0.25);
+  transition: 0.25s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-nuevo-usuario:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(44, 122, 123, 0.35);
+}
+
+.btn-nuevo-usuario:active {
+  transform: scale(0.97);
+}
+
+/* =========================
+   MODAL BASE (OCULTO BIEN)
+========================= */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  z-index: 1000;
+}
+
+/* SOLO SE MUESTRA CON ACTIVE */
+.modal.active {
+  display: flex;
+}
+
+/* =========================
+   CONTENIDO MODAL
+========================= */
+.modal-contenido {
+  background: #fff;
+  width: 100%;
+  max-width: 420px;
+  border-radius: 18px;
+  padding: 22px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+  animation: modalPop 0.25s ease;
+}
+
+/* TITULO */
+.modal-contenido h3 {
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 18px;
+  color: #2d3748;
+}
+
+/* INPUTS */
+.modal-contenido input,
+.modal-contenido textarea,
+.modal-contenido select {
+  width: 100%;
+  padding: 11px;
+  margin: 8px 0;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  font-size: 14px;
+  outline: none;
+  background: #f8fafc;
+  transition: 0.2s;
+  box-sizing: border-box;
+}
+
+.modal-contenido input:focus,
+.modal-contenido textarea:focus,
+.modal-contenido select:focus {
+  border-color: #2c7a7b;
+  box-shadow: 0 0 0 3px rgba(44, 122, 123, 0.15);
+  background: white;
+}
+
+/* BOTONES MODAL */
+.modal-contenido button {
+  width: 100%;
+  padding: 11px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+/* guardar */
+.modal-contenido button[type="submit"] {
+  background: linear-gradient(135deg, #2c7a7b, #38b2ac);
+  color: white;
+}
+
+.modal-contenido button[type="submit"]:hover {
+  transform: translateY(-2px);
+}
+
+/* cancelar */
+.modal-contenido button[type="button"] {
+  background: #e2e8f0;
+  color: #2d3748;
+}
+
+.modal-contenido button[type="button"]:hover {
+  background: #cbd5e0;
+}
+
+/* ANIMACION */
+@keyframes modalPop {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* =========================
+   RESPONSIVE TABLET
+========================= */
+@media (max-width: 768px) {
+  .usuarios-container {
+    padding: 0 15px;
+  }
+
+  .tabla-usuarios th,
+  .tabla-usuarios td {
+    padding: 10px;
+    font-size: 13px;
+  }
+
+  .btn-accion {
+    padding: 5px 8px;
+    font-size: 11px;
+  }
+
+  .estado-activo,
+  .estado-inactivo {
+    font-size: 11px;
+    padding: 4px 8px;
+  }
+
+  .modal-contenido {
+    max-width: 90%;
+  }
+}
+
+/* =========================
+   RESPONSIVE CELULAR
+========================= */
+@media (max-width: 600px) {
+  .usuarios-container {
+    padding: 0 12px;
+  }
+
+  /* tabla scrollable */
+  .tabla-usuarios {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+    border-radius: 12px;
+  }
+
+  .btn-accion {
+    font-size: 11px;
+    padding: 6px 8px;
+  }
+
+  /* MODAL CENTRADO PERFECTO */
+  .modal {
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .modal-contenido {
+    width: 95%;
+    max-width: 420px;
+    padding: 18px;
+    border-radius: 16px;
+  }
+}

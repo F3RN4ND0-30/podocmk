@@ -27,6 +27,10 @@ if (session_status() === PHP_SESSION_NONE) {
                 <li><a href="productos_inactivos.php">Acti-Productos</a></li>
             <?php endif; ?>
 
+            <?php if ($_SESSION['id'] == '1'): ?>
+                <li><a href="usuarios.php">Usuarios</a></li>
+            <?php endif; ?>
+
         </ul>
 
         <a href="../logout.php" class="btn-logout">Cerrar sesión</a>
