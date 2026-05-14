@@ -14,45 +14,54 @@ if (!$id) {
    PACIENTE
 ========================= */
 $stmt = $conn->prepare("
-    SELECT Nombres, Apellido_Pat 
-    FROM pacientes 
+    SELECT Nombres, Apellido_Pat
+    FROM pacientes
     WHERE IdPaciente = :id
 ");
 
-$stmt->bindParam(":id", $id);
+$stmt->bindParam(":id", $id, PDO::PARAM_INT);
 $stmt->execute();
 
 $paciente = $stmt->fetch(PDO::FETCH_ASSOC);
 
+if (!$paciente) {
+    echo json_encode(["error" => "Paciente no encontrado"]);
+    exit;
+}
+
 /* =========================
-   HISTORIAL (POR FECHA)
+   HISTORIAL
 ========================= */
 $stmt2 = $conn->prepare("
-    SELECT Foto, FechaSesion 
-    FROM historial_paciente 
+    SELECT IdHistorial, Foto, FechaSesion
+    FROM historial_paciente
     WHERE IdPaciente = :id
-    ORDER BY FechaSesion DESC, IdHistorial ASC
+    ORDER BY FechaSesion DESC, IdHistorial DESC
 ");
 
-$stmt2->bindParam(":id", $id);
+$stmt2->bindParam(":id", $id, PDO::PARAM_INT);
 $stmt2->execute();
 
 $historial = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 
 /* =========================
-   AGRUPAR POR DÍA
+   AGRUPAR POR FECHA
 ========================= */
 $agrupado = [];
 
 foreach ($historial as $item) {
 
-    $fecha = $item['FechaSesion'];
+    // normalizar fecha (por si viene DATETIME)
+    $fecha = date("Y-m-d", strtotime($item['FechaSesion']));
 
     if (!isset($agrupado[$fecha])) {
         $agrupado[$fecha] = [];
     }
 
-    $agrupado[$fecha][] = $item;
+    $agrupado[$fecha][] = [
+        "Foto" => $item['Foto'],
+        "FechaSesion" => $fecha
+    ];
 }
 
 /* =========================
@@ -61,4 +70,4 @@ foreach ($historial as $item) {
 echo json_encode([
     "paciente" => $paciente['Nombres'] . " " . $paciente['Apellido_Pat'],
     "historial" => $agrupado
-]);
+], JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);

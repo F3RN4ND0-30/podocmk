@@ -1,4 +1,6 @@
 <?php
+header("Content-Type: application/json; charset=utf-8");
+
 include("../../../db/conexion.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -8,11 +10,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $ap_pat = $_POST['ap_pat'];
     $ap_mat = $_POST['ap_mat'];
     $usuario = $_POST['usuario'];
-    $password = $_POST['password'] ?? ""; // puede venir vacío
+    $password = $_POST['password'] ?? "";
 
     try {
 
-        // CASO 1: SI SE CAMBIA CONTRASEÑA
         if (!empty($password)) {
 
             $hash = password_hash($password, PASSWORD_DEFAULT);
@@ -26,11 +27,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 WHERE IdUsuario = :id";
 
             $stmt = $conn->prepare($sql);
-
             $stmt->bindParam(":pass", $hash);
-        }
-        // CASO 2: SIN CAMBIAR CONTRASEÑA
-        else {
+        } else {
 
             $sql = "UPDATE usuarios SET 
                 Nombres = :nombres,
@@ -42,20 +40,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt = $conn->prepare($sql);
         }
 
-        // BIND COMUNES
         $stmt->bindParam(":id", $id);
         $stmt->bindParam(":nombres", $nombres);
         $stmt->bindParam(":ap_pat", $ap_pat);
         $stmt->bindParam(":ap_mat", $ap_mat);
         $stmt->bindParam(":usuario", $usuario);
 
-        // EJECUTAR
         if ($stmt->execute()) {
-            echo "ok";
+            echo json_encode([
+                "ok" => true
+            ]);
         } else {
-            echo "error";
+            echo json_encode([
+                "ok" => false
+            ]);
         }
     } catch (PDOException $e) {
-        echo "error: " . $e->getMessage();
+        echo json_encode([
+            "ok" => false,
+            "error" => $e->getMessage()
+        ]);
     }
 }

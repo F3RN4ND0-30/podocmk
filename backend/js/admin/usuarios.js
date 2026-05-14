@@ -33,11 +33,13 @@ function cargarUsuarios() {
               </span>
             </td>
             <td>
-              <button class="btn-accion btn-editar" onclick="editar(${u.IdUsuario}, '${u.Nombres}', '${u.Apellido_Pat}', '${u.Apellido_Mat}', '${u.Usuario}')">
+              <button class="btn-accion btn-editar"
+                onclick="editar(${u.IdUsuario}, '${u.Nombres}', '${u.Apellido_Pat}', '${u.Apellido_Mat}', '${u.Usuario}')">
                 Editar
               </button>
 
-              <button class="btn-accion btn-toggle" onclick="toggle(${u.IdUsuario})">
+              <button class="btn-accion btn-toggle"
+                onclick="toggle(${u.IdUsuario})">
                 Activar/Desactivar
               </button>
             </td>
@@ -46,7 +48,8 @@ function cargarUsuarios() {
       });
 
       document.getElementById("tablaUsuarios").innerHTML = html;
-    });
+    })
+    .catch((err) => console.error("Error listar usuarios:", err));
 }
 
 /* =========================
@@ -60,11 +63,18 @@ document
     fetch("../../backend/php/admin/usuarios/crear.php", {
       method: "POST",
       body: new FormData(this),
-    }).then(() => {
-      cerrarModal();
-      this.reset();
-      cargarUsuarios();
-    });
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.ok) {
+          cerrarModal();
+          this.reset();
+          cargarUsuarios();
+        } else {
+          alert("Error al crear usuario");
+        }
+      })
+      .catch((err) => console.error("Error crear:", err));
   });
 
 /* =========================
@@ -91,10 +101,17 @@ document
     fetch("../../backend/php/admin/usuarios/editar.php", {
       method: "POST",
       body: new FormData(this),
-    }).then(() => {
-      cerrarModalEdit();
-      cargarUsuarios();
-    });
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.ok) {
+          cerrarModalEdit();
+          cargarUsuarios();
+        } else {
+          alert("Error al actualizar usuario");
+        }
+      })
+      .catch((err) => console.error("Error editar:", err));
   });
 
 /* =========================
@@ -107,8 +124,22 @@ function toggle(id) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ id }),
-  }).then(() => cargarUsuarios());
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log("Toggle response:", data);
+
+      if (data.ok) {
+        // opcional: podrías usar data.estado si quieres optimizar UI
+        cargarUsuarios();
+      } else {
+        alert("Error al cambiar estado");
+      }
+    })
+    .catch((err) => console.error("Error toggle:", err));
 }
 
-/* INIT */
+/* =========================
+   INIT
+========================= */
 cargarUsuarios();

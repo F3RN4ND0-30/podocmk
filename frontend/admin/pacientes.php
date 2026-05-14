@@ -90,7 +90,7 @@ $pacientes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             <h3>Registrar Paciente</h3>
 
-            <form action="../../backend/php/admin/pacientes/agregar_paciente.php" method="POST">
+            <form id="formPaciente" action="../../backend/php/admin/pacientes/agregar_paciente.php" method="POST">
 
                 <input type="text" name="nombre" placeholder="Nombre" required>
                 <input type="text" name="apellido_pat" placeholder="Apellido Paterno" required>
@@ -152,6 +152,13 @@ $pacientes = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
 
     <script src="../../backend/js/admin/pacientes.js"></script>
+    <script>
+        document.addEventListener("input", function(e) {
+            if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") {
+                e.target.value = e.target.value.toUpperCase();
+            }
+        });
+    </script>
 </body>
 
 </html>

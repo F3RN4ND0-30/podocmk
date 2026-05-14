@@ -5,10 +5,12 @@ let pacienteActualId = null;
 ========================= */
 function abrirModalPaciente() {
   document.getElementById("modalPaciente").style.display = "flex";
+  document.getElementById("formPaciente").reset();
 }
 
 function cerrarModalPaciente() {
   document.getElementById("modalPaciente").style.display = "none";
+  document.getElementById("formPaciente").reset();
 }
 
 /* cerrar al hacer click fuera */
@@ -91,7 +93,7 @@ function abrirHistorial(id) {
             html += `
               <div class="sesion">
                 <p>Foto ${index + 1}</p>
-                <img src="../../backend/uploads/pacientes/${item.Foto}" />
+                <img src="../../backend/uploads/pacientes/${item.Foto}?v=${Date.now()}" />
               </div>
             `;
           });
