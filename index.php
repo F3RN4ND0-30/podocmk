@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CMK Podología</title>
     <link rel="stylesheet" href="backend/css/index.css">
     <link rel="stylesheet" href="backend/css/navbar/navbar.css">

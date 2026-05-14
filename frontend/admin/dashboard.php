@@ -15,7 +15,8 @@ $nombre = $_SESSION['nombre'];
 
 <head>
     <meta charset="UTF-8">
-    <title>Dashboard - CMK</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio - CMK</title>
     <link rel="stylesheet" href="../../backend/css/admin/dashboard.css">
     <link rel="stylesheet" href="../../backend/css/navbar/navbar.css">
 </head>

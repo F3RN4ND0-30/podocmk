@@ -24,7 +24,7 @@ body {
   margin-bottom: 30px;
 }
 
-.h1{
+.h1 {
   margin-top: -10px;
 }
 
@@ -48,4 +48,56 @@ body {
 
 .btn-salir:hover {
   background-color: #c53030;
+}
+
+/* =========================
+   TABLET
+========================= */
+@media (max-width: 900px) {
+  .dashboard-container {
+    width: 90%;
+    padding: 35px;
+  }
+
+  .gif-container img {
+    width: 100%;
+    max-width: 400px;
+  }
+}
+
+/* =========================
+   CELULAR
+========================= */
+@media (max-width: 600px) {
+  body {
+    padding: 15px;
+  }
+
+  .dashboard-container {
+    width: 100%;
+    margin: 20px auto;
+    padding: 25px 20px;
+  }
+
+  .dashboard-container h1 {
+    font-size: 28px;
+    line-height: 1.2;
+  }
+
+  .subtitulo {
+    font-size: 15px;
+    margin-bottom: 20px;
+  }
+
+  .gif-container img {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 0;
+  }
+
+  .btn-salir {
+    width: 100%;
+    text-align: center;
+    padding: 12px;
+  }
 }

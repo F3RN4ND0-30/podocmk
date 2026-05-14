@@ -89,3 +89,86 @@
 .btn-logout:hover {
   background-color: #c53030;
 }
+
+/* =========================
+   TABLET
+========================= */
+@media (max-width: 900px) {
+  .nav-admin-contenedor {
+    padding: 0 20px;
+  }
+
+  .nav-admin-links {
+    gap: 15px;
+  }
+}
+
+/* =========================
+   CELULAR
+========================= */
+@media (max-width: 600px) {
+  .navbar-admin {
+    padding: 15px;
+  }
+
+  .nav-admin-contenedor {
+    flex-direction: column;
+
+    gap: 20px;
+
+    text-align: center;
+  }
+
+  .nav-admin-links {
+    flex-direction: column;
+
+    width: 100%;
+
+    gap: 15px;
+  }
+
+  .nav-admin-links li {
+    width: 100%;
+  }
+
+  .nav-admin-links a,
+  .nav-admin-links span {
+    display: block;
+
+    width: 100%;
+
+    padding: 10px;
+  }
+
+  /* DROPDOWN */
+  .dropdown {
+    width: 100%;
+  }
+
+  .dropdown-content {
+    position: static;
+
+    display: none;
+
+    margin-top: 10px;
+
+    width: 100%;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  .dropdown-content a {
+    text-align: center;
+  }
+
+  /* BOTÓN LOGOUT */
+  .btn-logout {
+    display: block;
+
+    width: 100%;
+
+    text-align: center;
+  }
+}

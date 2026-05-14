@@ -27,10 +27,6 @@ if (session_status() === PHP_SESSION_NONE) {
                 <li><a href="productos_inactivos.php">Acti-Productos</a></li>
             <?php endif; ?>
 
-            <li>
-                <a href="citas.php">Citas</a>
-            </li>
-
         </ul>
 
         <a href="../logout.php" class="btn-logout">Cerrar sesión</a>
